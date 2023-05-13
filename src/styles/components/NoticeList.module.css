@@ -1,0 +1,43 @@
+.notice-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .notice-card {
+    width: calc(33.33% - 1rem);
+    background-color: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .notice-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--card-title-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .notice-body {
+    font-size: 1rem;
+    color: var(--card-body-color);
+    margin-bottom: 1rem;
+  }
+  
+  .notice-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--card-meta-color);
+  }
+  
+  .notice-author {
+    font-weight: bold;
+  }
+  
+  .notice-date {
+    margin-left: 0.5rem;
+  }
+  
