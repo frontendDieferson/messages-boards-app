@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { createNotice } from "../utils/api";
+import {createNotice}  from "../utils/api";
 import styles from "../styles/components/NoticeForm.module.css";
 
 export default function NoticeForm() {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { parseCookies } from 'nookies';
-import { createNotice } from '../utils/api';
+import  createNotice  from '../utils/api';
 import Header from '../components/Header';
 import NoticeForm from '../components/NoticeForm';
 
@@ -9,7 +9,7 @@ export default function CreateNotice() {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('');
 
-  async function handleCreateNotice(data) {
+  async function handleCreateNotice(data: string) {
     try {
       const token = parseCookies().token;
       await createNotice(data, token);

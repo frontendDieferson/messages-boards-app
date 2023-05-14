@@ -1,4 +1,4 @@
-import { Notice } from '@/types/types';
+import { Notice, NoticeData } from '@/types/types';
 
 
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
@@ -11,6 +11,8 @@ const api: AxiosInstance = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+
 
 export const getNotices = async (): Promise<Notice[]> => {
     try {
@@ -41,9 +43,26 @@ export const apiRequest = async <T>(
       data,
     });
     return response.data;
-  } catch (error) {
-    throw error.response?.data || error.message;
-  }
+  } catch (error: unknown) {
+    if (error instanceof Error){
+      throw new Error('Erro ao criar o Recado:' + error.message)
+    } else {
+      throw new Error('Erro desconhecido ao criar o recado')
+    }
+  } 
 };
 
-export default api;
+export default async function createNotice(noticeData: NoticeData): Promise<any> {
+  try {
+    // Fazer uma chamada POST para a rota de criação de recados na sua API
+    const response = await axios.post('/api/notices', noticeData);
+    return response.data;
+  } catch (error) {
+    // Lidar com erros de criação de recado, como falha na conexão com a API
+    throw new Error('Erro ao criar o recado.');
+  }
+}
+
+
+
+

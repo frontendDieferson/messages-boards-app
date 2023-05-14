@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { useRouter } from "next/router";
 import { apiRequest, setAuthToken } from "./api";
-import { AuthData, User } from "../types";
+import { AuthData, User } from "@/types/types";
 
 interface AuthContextData {
   user: User | null;
@@ -85,10 +85,15 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, loading, login, logout }}>
+   
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, loading, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
-export const useAuth = () => useContext(AuthContext);
+
+export const useAuth = (): AuthContextData => useContext(AuthContext)
+

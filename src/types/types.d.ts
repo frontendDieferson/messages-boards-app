@@ -5,7 +5,11 @@ export interface Notice {
     author: string;
     createdAt: string;
   }
-  
+
+export interface NoticeData {
+  title: string;
+  message: string;
+  }
   export interface User {
     id: string;
     name: string;
