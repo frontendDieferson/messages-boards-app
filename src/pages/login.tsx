@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import { login } from '../utils/api';
-import styles from '../styles/Login.module.css';
+import styles from '../styles/pages/login.module.css';
+import Link from 'next/link';
 
 export default function Login() {
   const router = useRouter();
@@ -27,12 +28,13 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleLogin}>
+      <form className={styles.form} onSubmit={handleLogin}>
         <h1>Login</h1>
         {errorMessage && <p>{errorMessage}</p>}
         <div>
-          <label htmlFor="email">Email:</label>
+          <label className={styles.inputLabel} htmlFor="email">Email:</label>
           <input
+             className={styles.inputField}
             type="email"
             id="email"
             value={email}
@@ -41,8 +43,9 @@ export default function Login() {
           />
         </div>
         <div>
-          <label htmlFor="password">Senha:</label>
+          <label  className={styles.inputLabel} htmlFor="password">Senha:</label>
           <input
+             className={styles.inputField}
             type="password"
             id="password"
             value={password}
@@ -50,7 +53,10 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit">Entrar</button>
+        <Link href='/index'>
+        <button className={styles.submitBtn} type="submit">Entrar</button>
+
+        </Link>
       </form>
     </div>
   );

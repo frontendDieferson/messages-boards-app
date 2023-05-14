@@ -21,3 +21,10 @@ export interface NoticeData {
     token: string;
   }
   
+  export interface AuthContextProps {
+    user: User | null;
+    isAuthenticated: boolean;
+    loading: boolean;
+    login: () => void;
+    logout: () => void;
+  }

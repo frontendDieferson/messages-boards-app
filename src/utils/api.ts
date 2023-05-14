@@ -12,7 +12,22 @@ const api: AxiosInstance = axios.create({
   },
 });
 
+export async function login(token: string): Promise<void> {
+  try {
+    const response = await axios.post('/api/login', { token });
+  } catch {
+    throw new Error('Erro ao realizar o login');
+  }
+}
 
+export async function logout(): Promise<void> {
+  try {
+    const response = await axios.post('/api/logout');
+    // Lógica adicional, se necessário
+  } catch (error) {
+    throw new Error('Erro ao realizar o logout');
+  }
+}
 
 export const getNotices = async (): Promise<Notice[]> => {
     try {
