@@ -1,12 +1,17 @@
+/* eslint-disable react/display-name */
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from './auth';
 
 export function withAuth<P>(WrappedComponent: React.ComponentType<P>) {
-  // eslint-disable-next-line react/display-name
   return (props: P) => {
     const { isAuthenticated, loading, login } = useAuth();
     const router = useRouter();
+
+    const ProtectedPage: React.FC = () => {
+      // Seu componente protegido
+      return <div>Conteúdo protegido</div>;
+    };
 
     useEffect(() => {
       if (!isAuthenticated && !loading) {
@@ -29,3 +34,5 @@ export function withAuth<P>(WrappedComponent: React.ComponentType<P>) {
     return <WrappedComponent {...props} />;
   };
 }
+
+export default withAuth(ProtectedPage);
