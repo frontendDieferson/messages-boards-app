@@ -30,27 +30,27 @@ export default function Index({ notices }: IndexProps) {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { token } = parseCookies(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { token } = parseCookies(context);
 
-//   if (!token) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//         permanent: false,
-//       },
-//     };
-//   }
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
 
-//   try {
-//     const notices = await getNotices(token);
-//     return {
-//       props: { notices },
-//     };
-//   } catch (err) {
-//     console.error(err);
-//     return {
-//       props: { notices: [] },
-//     };
-//   }
-// };
+  try {
+    const notices = await getNotices(token);
+    return {
+      props: { notices },
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      props: { notices: [] },
+    };
+  }
+};

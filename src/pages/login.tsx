@@ -53,10 +53,7 @@ export default function Login() {
             required
           />
         </div>
-        <Link href='/index'>
         <button className={styles.submitBtn} type="submit">Entrar</button>
-
-        </Link>
       </form>
     </div>
   );
